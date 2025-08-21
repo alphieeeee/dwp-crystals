@@ -1,0 +1,27 @@
+.container {
+  .header {
+    color: #0000;
+    font-size: 6vw;
+    -webkit-text-stroke: 2px #512c6f;
+  }
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, #fe9216, #db5fb3, #512c6f);
+    // background: #512c6f;
+    margin: 2rem 0;
+  }
+  .line {
+    height: 1px;
+    background: linear-gradient(to right, #fe9216, #db5fb3, #512c6f);
+    background: #512c6f;
+  }
+  .cards {
+    color: #512c6f;
+  }
+  .product-image {
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border: 4px solid #fff;
+  }
+}

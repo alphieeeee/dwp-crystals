@@ -1,0 +1,26 @@
+.container {
+  border-radius: 10px;
+  border: 1px solid #db5fb3;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 2vw;
+  // transform: translateY(-50%);
+  right: 2vw;
+  width: 5px;
+  height: 25vh;
+  overflow: hidden;
+  .scroll-progress-vertical {
+    // background: linear-gradient(to bottom, #fe9216, #db5fb3, #512c6f);
+    background: #512c6f;
+    width: 100%;
+    height: 100%;
+  }
+  .scroll-progress-bar {
+    // background: green;
+    background: linear-gradient(to top, #fe9216, #db5fb3, #512c6f);
+    transform-origin: 50% 0%;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(0);
+  }
+}

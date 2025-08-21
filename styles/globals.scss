@@ -1,0 +1,112 @@
+@use "tailwindcss" as *;
+// @font-face {
+//   font-family: "BeautyBrand";
+//   src:
+//     url("/fonts/BeautyBrand.woff2") format("woff2"),
+//     url("/fonts/BeautyBrand.woff") format("woff"),
+//     url("/fonts/BeautyBrand.ttf") format("truetype");
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: "BeautyBrandItalic";
+//   src:
+//     url("/fonts/BeautyBrandItalic.woff2") format("woff2"),
+//     url("/fonts/BeautyBrandItalic.woff") format("woff"),
+//     url("/fonts/BeautyBrandItalic.ttf") format("truetype");
+//   font-weight: normal;
+//   font-style: italic;
+//   font-display: swap;
+// }
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  // background: var(--background);
+  // color: var(--foreground);
+  // background: #f5bccb;
+  font-family: Arial, Helvetica, sans-serif;
+  // font-family: "BeautyBrand";
+}
+
+.card {
+  background: #000;
+  color: #fff;
+  // background: linear-gradient(to bottom, #fe9216, #db5fb3, #512c6f);
+  // background: #fff;
+  // color: #000;
+  background: #512c6f;
+  color: #db5fb3;
+}
+.price {
+  color: #fff;
+  color: #000;
+}
+
+.canvas-background {
+  // background: linear-gradient(to bottom, #fe9216, #db5fb3, #512c6f);
+  // background: #000;
+  // background: #000;
+}
+
+.carousel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transform: rotateX(-10deg) translateY(-70px);
+  transform-style: preserve-3d;
+  perspective: var(--perspective, 800px); /* dynamic */
+  user-select: none;
+  cursor: grab;
+}
+
+.carousel-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* width/height now set in JS */
+  transform: translate3d(0, 0, -10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  transform-origin: 50% 50%;
+}
+
+@media (max-width: 600px) {
+  .carousel {
+    transform: rotateX(-10deg) scale(0.6) translateY(-60px);
+  }
+}
+
+.transition-overlays {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  .transition-overlay {
+    background: #ffdaed;
+    transform: translate3d(0, 0, 0);
+  }
+}

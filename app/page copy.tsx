@@ -1,14 +1,12 @@
 import React from "react";
 import HomeSection from "./components/home/HomeSection";
 import HeroSection from "./components/HeroSection";
-import HomeAbout from "./components/home/HomeAbout";
 
 const Home = () => {
   return (
-    <main className={`pt-[2vw]`}>
+    <main className={`pt-[15%]`}>
       <HeroSection />
       <HomeSection />
-      <HomeAbout />
     </main>
   );
 };
