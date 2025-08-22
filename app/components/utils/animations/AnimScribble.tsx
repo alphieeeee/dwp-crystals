@@ -1,22 +1,28 @@
-"use client";
-import React, { useRef, RefObject } from "react";
-import { useGSAP } from "@gsap/react";
-import { useGsapAnim } from "@/hooks/useGsapAnim";
+'use client'
+import React, { useRef, RefObject } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react'
+// import useIsomorphicLayoutEffect from "../../../utils/useIsomorphicLayoutEffect";
+import { useGsapAnim } from '@/hooks/useGsapAnim';
 
-interface AnimScribbleProps {
+interface AnimWidthProps {
   id?: string;
   className?: string;
   style?: React.CSSProperties;
   trigger?: RefObject<HTMLElement>;
   delay?: number;
-  duration?: number;
+  duration: number;
   markers?: boolean;
   animOnce?: boolean;
   inViewport?: boolean;
   children?: React.ReactNode;
+  origin?: string;
+  from: number;
+  to: number,
+  scale: string;
 }
 
-const AnimScribble: React.FC<AnimScribbleProps> = ({
+const AnimWidth: React.FC<AnimWidthProps> = ({
   id,
   trigger,
   className,
@@ -27,27 +33,24 @@ const AnimScribble: React.FC<AnimScribbleProps> = ({
   animOnce,
   inViewport,
   children,
+  origin,
+  from,
+  to,
+  scale,
 }) => {
-  const { animScribble } = useGsapAnim();
-  const customClasses = `${className ? ` ${className}` : ""}`;
+  const { animWidth } = useGsapAnim();
+  const customClasses = `${className ? ` ${className}` : ''}`;
   const customStyles = { ...style };
   const elementRef = useRef<HTMLDivElement | null>(null);
   const container = trigger ?? elementRef;
+  
+  // useIsomorphicLayoutEffect(() => {
+  //   gsap.registerPlugin(useGSAP);
+  // }, []);
 
-  useGSAP(
-    () => {
-      animScribble(
-        elementRef,
-        trigger,
-        delay,
-        duration,
-        markers,
-        animOnce,
-        inViewport,
-      );
-    },
-    { scope: container },
-  );
+  useGSAP(() => {
+    animWidth(elementRef, trigger, delay, duration, markers, animOnce, inViewport, origin, from, to, scale);
+  }, { scope: container });
 
   return (
     <div
@@ -55,10 +58,10 @@ const AnimScribble: React.FC<AnimScribbleProps> = ({
       className={customClasses}
       style={customStyles}
       ref={elementRef}
-    >
+      >
       {children}
     </div>
   );
 };
 
-export default AnimScribble;
+export default AnimWidth;

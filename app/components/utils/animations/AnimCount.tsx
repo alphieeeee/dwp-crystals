@@ -1,7 +1,9 @@
-"use client";
-import React, { useRef, RefObject } from "react";
-import { useGSAP } from "@gsap/react";
-import { useGsapAnim } from "@/hooks/useGsapAnim";
+'use client'
+import React, { useRef, RefObject } from 'react';
+import { gsap } from 'gsap';
+// import useIsomorphicLayoutEffect from "../../../utils/useIsomorphicLayoutEffect";
+import { useGsapAnim } from '@/hooks/useGsapAnim';
+import { useGSAP } from '@gsap/react';
 
 interface AnimCountProps {
   id?: string;
@@ -33,29 +35,20 @@ const AnimCount: React.FC<AnimCountProps> = ({
   increaseBy,
 }) => {
   const { animCount } = useGsapAnim();
-  const customClasses = `${className ? ` ${className}` : ""}`;
+  const customClasses = `${className ? ` ${className}` : ''}`;
   const customStyles = { ...style };
   const elementRef = useRef<HTMLDivElement | null>(null);
   const container = trigger ?? elementRef;
 
-  useGSAP(
-    () => {
-      if (elementRef.current) {
-        animCount(
-          elementRef,
-          trigger,
-          delay,
-          duration,
-          markers,
-          animOnce,
-          inViewport,
-          animTo,
-          increaseBy,
-        );
-      }
-    },
-    { scope: container },
-  );
+  // useIsomorphicLayoutEffect(() => {
+  //   gsap.registerPlugin(useGSAP);
+  // }, []);
+
+  useGSAP(() => {
+    if (elementRef.current) {
+      animCount(elementRef, trigger, delay, duration, markers, animOnce, inViewport, animTo, increaseBy);
+    }
+  }, { scope: container });
 
   return (
     <span
@@ -63,7 +56,7 @@ const AnimCount: React.FC<AnimCountProps> = ({
       className={customClasses}
       style={customStyles}
       ref={elementRef}
-    >
+      >
       {children}
     </span>
   );

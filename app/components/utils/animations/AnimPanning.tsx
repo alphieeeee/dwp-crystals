@@ -1,6 +1,8 @@
-"use client";
-import React, { useRef, RefObject } from "react";
-import { useGSAP } from "@gsap/react";
+'use client'
+import React, { useRef, RefObject } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react'
+// import useIsomorphicLayoutEffect from "../../../utils/useIsomorphicLayoutEffect";
 import { useGsapAnim } from "@/hooks/useGsapAnim";
 
 interface AnimPanningProps {
@@ -43,32 +45,18 @@ const AnimPanning: React.FC<AnimPanningProps> = ({
   fade,
 }) => {
   const { animPanning } = useGsapAnim();
-  const customClasses = `${className ? ` ${className}` : ""}`;
+  const customClasses = `${className ? ` ${className}` : ''}`;
   const customStyles = { ...style };
   const elementRef = useRef<HTMLDivElement | null>(null);
   const container = trigger ?? elementRef;
+  
+  // useIsomorphicLayoutEffect(() => {
+  //   gsap.registerPlugin(useGSAP);
+  // }, []);
 
-  useGSAP(
-    () => {
-      animPanning(
-        elementRef,
-        trigger,
-        delay,
-        duration,
-        markers,
-        animOnce,
-        inViewport,
-        onScroll,
-        starting,
-        ending,
-        direction,
-        from,
-        to,
-        fade,
-      );
-    },
-    { scope: container },
-  );
+  useGSAP(() => {
+    animPanning(elementRef, trigger, delay, duration, markers, animOnce, inViewport, onScroll, starting, ending, direction, from, to, fade);
+  }, { scope: container });
 
   return (
     <div
@@ -76,7 +64,7 @@ const AnimPanning: React.FC<AnimPanningProps> = ({
       className={customClasses}
       style={customStyles}
       ref={elementRef}
-    >
+      >
       {children}
     </div>
   );

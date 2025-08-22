@@ -1,7 +1,9 @@
-"use client";
-import React, { useRef, RefObject } from "react";
-import { useGSAP } from "@gsap/react";
-import { useGsapAnim } from "@/hooks/useGsapAnim";
+'use client'
+import React, { useRef, RefObject } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react'
+// import useIsomorphicLayoutEffect from "../../../utils/useIsomorphicLayoutEffect";
+import { useGsapAnim } from '@/hooks/useGsapAnim';
 
 interface AnimScaleProps {
   id?: string;
@@ -16,7 +18,7 @@ interface AnimScaleProps {
   children?: React.ReactNode;
   origin?: string;
   from: number;
-  to: number;
+  to: number,
   scale: string;
 }
 
@@ -37,29 +39,18 @@ const AnimScale: React.FC<AnimScaleProps> = ({
   scale,
 }) => {
   const { animScale } = useGsapAnim();
-  const customClasses = `${className ? ` ${className}` : ""}`;
+  const customClasses = `${className ? ` ${className}` : ''}`;
   const customStyles = { ...style };
   const elementRef = useRef<HTMLDivElement | null>(null);
   const container = trigger ?? elementRef;
+  
+  // useIsomorphicLayoutEffect(() => {
+  //   gsap.registerPlugin(useGSAP);
+  // }, []);
 
-  useGSAP(
-    () => {
-      animScale(
-        elementRef,
-        trigger,
-        delay,
-        duration,
-        markers,
-        animOnce,
-        inViewport,
-        origin,
-        from,
-        to,
-        scale,
-      );
-    },
-    { scope: container },
-  );
+  useGSAP(() => {
+    animScale(elementRef, trigger, delay, duration, markers, animOnce, inViewport, origin, from, to, scale);
+  }, { scope: container });
 
   return (
     <div
@@ -67,7 +58,7 @@ const AnimScale: React.FC<AnimScaleProps> = ({
       className={customClasses}
       style={customStyles}
       ref={elementRef}
-    >
+      >
       {children}
     </div>
   );

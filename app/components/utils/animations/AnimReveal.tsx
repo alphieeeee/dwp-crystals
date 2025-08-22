@@ -1,7 +1,9 @@
-"use client";
-import React, { useRef, RefObject } from "react";
-import { useGSAP } from "@gsap/react";
-import { useGsapAnim } from "@/hooks/useGsapAnim";
+'use client'
+import React, { useRef, RefObject } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react'
+// import useIsomorphicLayoutEffect from "../../../utils/useIsomorphicLayoutEffect";
+import { useGsapAnim } from '@/hooks/useGsapAnim';
 
 interface AnimRevealProps {
   id?: string;
@@ -29,25 +31,18 @@ const AnimReveal: React.FC<AnimRevealProps> = ({
   children,
 }) => {
   const { animReveal } = useGsapAnim();
-  const customClasses = `${className ? ` ${className}` : ""}`;
+  const customClasses = `${className ? ` ${className}` : ''}`;
   const customStyles = { ...style };
   const elementRef = useRef<HTMLDivElement | null>(null);
   const container = trigger ?? elementRef;
+  
+  // useIsomorphicLayoutEffect(() => {
+  //   gsap.registerPlugin(useGSAP);
+  // }, []);
 
-  useGSAP(
-    () => {
-      animReveal(
-        elementRef,
-        trigger,
-        delay,
-        duration,
-        markers,
-        animOnce,
-        inViewport,
-      );
-    },
-    { scope: container },
-  );
+  useGSAP(() => {
+    animReveal(elementRef, trigger, delay, duration, markers, animOnce, inViewport);
+  }, { scope: container });
 
   return (
     <div
@@ -55,7 +50,7 @@ const AnimReveal: React.FC<AnimRevealProps> = ({
       className={customClasses}
       style={customStyles}
       ref={elementRef}
-    >
+      >
       {children}
     </div>
   );
