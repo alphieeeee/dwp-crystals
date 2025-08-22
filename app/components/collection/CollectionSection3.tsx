@@ -10,7 +10,7 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const CollectionSection: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const collectionSectionRef = useRef<HTMLDivElement | null>(null);
   const productImgRef = useRef<HTMLDivElement | null>(null);
   const triggerRef = useRef<HTMLDivElement | null>(null);
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -56,7 +56,7 @@ const CollectionSection: React.FC = () => {
   return (
     <section
       className={`${styles.container} mx-auto w-[min(90vw,1920px)] pb-[5vh] overflow-hidden`}
-      ref={containerRef}
+      ref={collectionSectionRef}
     >
       <div className={`${styles.header} flex justify-between items-center`}>
         <div className={`${styles.divider} w-[25vw]`}></div>

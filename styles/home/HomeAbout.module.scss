@@ -1,9 +1,34 @@
 .container {
+    .homeabout-left {
+
+    }
+    .homeabout-right {
+        p {
+            max-width: 80%;
+            margin: auto;
+            color: #fff;
+            font-size: 1.6vw;
+            // text-align: center;
+        }
+    }
     .sticky {
         background: #bde0fe;
         border-radius: 8px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        width: 200px;
-        height: 150px;
+        width: 80%;
+        padding: 2rem;
+        aspect-ratio: 2/1;
+        height: auto;
+        .pinku {
+            margin: auto;
+            width: 400px;
+            // height: auto;
+        }
+    }
+    .sticky-left {
+        transform: rotate(-5deg);
+    }
+    .sticky-right {
+        transform: rotate(5deg);
     }
 }

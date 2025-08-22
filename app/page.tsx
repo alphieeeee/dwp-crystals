@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <main className={`pt-[2vw]`}>
       <HeroSection />
-      <HomeSection />
+      {/* <HomeSection /> */}
       <HomeAbout />
     </main>
   );
