@@ -312,44 +312,44 @@ export const useGsapAnim = () => {
     }
   };
 
-  const animCount = (
-    elementRef: RefObject<HTMLElement>, // element to animate
-    triggerRef?: RefObject<HTMLElement>, // trigger element
-    delay: number = 0, // delay of animation
-    duration: number = 0.5, // duration of animation
-    markers: boolean = false, // show markers
-    animOnce: boolean = false, // animate once
-    inViewport: boolean = true, // animate on scroll
-    animTo: number = 10, // content to animate
-    increaseBy: number = 1, // increment value
-  ) => {
-    if (elementRef.current) {
-      const el = elementRef.current;
-      const triggerEL = triggerRef?.current ? triggerRef?.current : el;
-      const countTL = gsap.timeline({ paused: true, delay: delay, defaults: { ease: 'sine.inOut' } });
-      countTL.to(el, {
-        duration: duration,
-        textContent: animTo,
-        snap: { textContent: increaseBy }
-      });
-      // ENTER
-      const countEnterST = ScrollTrigger.create({
-        trigger: triggerEL,
-        start: 'top 90%',
-        onEnter: () => countTL.play(),
-        markers: markers,
-      });
-      // RESET ON LEAVE BACK
-      if(!animOnce) {
-        const counterLeaveBackST = ScrollTrigger.create({
-          trigger: triggerEL,
-          start: 'top bottom',
-          onLeaveBack: () => countTL.pause(0),
-          markers: markers,
-        });
-      }
-    }
-  }
+  // const animCount = (
+  //   elementRef: RefObject<HTMLElement>, // element to animate
+  //   triggerRef?: RefObject<HTMLElement>, // trigger element
+  //   delay: number = 0, // delay of animation
+  //   duration: number = 0.5, // duration of animation
+  //   markers: boolean = false, // show markers
+  //   animOnce: boolean = false, // animate once
+  //   inViewport: boolean = true, // animate on scroll
+  //   animTo: number = 10, // content to animate
+  //   increaseBy: number = 1, // increment value
+  // ) => {
+  //   if (elementRef.current) {
+  //     const el = elementRef.current;
+  //     const triggerEL = triggerRef?.current ? triggerRef?.current : el;
+  //     const countTL = gsap.timeline({ paused: true, delay: delay, defaults: { ease: 'sine.inOut' } });
+  //     countTL.to(el, {
+  //       duration: duration,
+  //       textContent: animTo,
+  //       snap: { textContent: increaseBy }
+  //     });
+  //     // ENTER
+  //     const countEnterST = ScrollTrigger.create({
+  //       trigger: triggerEL,
+  //       start: 'top 90%',
+  //       onEnter: () => countTL.play(),
+  //       markers: markers,
+  //     });
+  //     // RESET ON LEAVE BACK
+  //     if(!animOnce) {
+  //       const counterLeaveBackST = ScrollTrigger.create({
+  //         trigger: triggerEL,
+  //         start: 'top bottom',
+  //         onLeaveBack: () => countTL.pause(0),
+  //         markers: markers,
+  //       });
+  //     }
+  //   }
+  // }
 
   const animScribble = (
     elementRef: RefObject<HTMLElement>, // element to animate
@@ -452,7 +452,7 @@ export const useGsapAnim = () => {
     animScale,
     animWidth,
     animRandomChars,
-    animCount,
+    // animCount,
     animScribble,
   };
 };
