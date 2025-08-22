@@ -51,14 +51,14 @@ const AnimCount: React.FC<AnimCountProps> = ({
   }, { scope: container });
 
   return (
-    <span
+    <div
       id={id}
       className={customClasses}
       style={customStyles}
       ref={elementRef}
       >
       {children}
-    </span>
+    </div>
   );
 };
 

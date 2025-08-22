@@ -319,41 +319,37 @@ export const useGsapAnim = () => {
     duration: number = 0.5, // duration of animation
     markers: boolean = false, // show markers
     animOnce: boolean = false, // animate once
-    inViewport: boolean = true, // animate in viewport
+    inViewport: boolean = true, // animate on scroll
     animTo: number = 10, // content to animate
     increaseBy: number = 1, // increment value
   ) => {
     if (elementRef.current) {
       const el = elementRef.current;
       const triggerEL = triggerRef?.current ? triggerRef?.current : el;
-      const countTL = gsap.timeline({
-        paused: true,
-        delay: delay,
-        defaults: { ease: "sine.inOut" },
-      });
+      const countTL = gsap.timeline({ paused: true, delay: delay, defaults: { ease: 'sine.inOut' } });
       countTL.to(el, {
         duration: duration,
         textContent: animTo,
-        snap: { textContent: increaseBy },
+        snap: { textContent: increaseBy }
       });
       // ENTER
       const countEnterST = ScrollTrigger.create({
         trigger: triggerEL,
-        start: "top 90%",
+        start: 'top 90%',
         onEnter: () => countTL.play(),
         markers: markers,
       });
       // RESET ON LEAVE BACK
-      if (!animOnce) {
+      if(!animOnce) {
         const counterLeaveBackST = ScrollTrigger.create({
           trigger: triggerEL,
-          start: "top bottom",
+          start: 'top bottom',
           onLeaveBack: () => countTL.pause(0),
           markers: markers,
         });
       }
     }
-  };
+  }
 
   const animScribble = (
     elementRef: RefObject<HTMLElement>, // element to animate
