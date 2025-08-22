@@ -13,10 +13,10 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 const NavMobile: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const menuMobileRef = useRef<HTMLElement | any>();
-  const navMobileRef = useRef<HTMLElement | any>();
-  const bgRef = useRef<HTMLElement | any>();
-  const navMobileTL = useRef<gsap.core.Timeline | any>();
+  const menuMobileRef = useRef<HTMLElement | any>(null);
+  const navMobileRef = useRef<HTMLElement | any>(null);
+  const bgRef = useRef<HTMLElement | any>(null);
+  const navMobileTL = useRef<gsap.core.Timeline | any>(null);
   const { contextSafe } = useGSAP({ scope: menuMobileRef.current });
   const { pageTransitionOut } = usePageTransition();
   const {
