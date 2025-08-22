@@ -58,6 +58,7 @@ export default function StarfieldBackground() {
       }
 
       draw() {
+        if (!ctx) return;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 105, 180, ${this.opacity})`; // 💖 Pink (Hot Pink)
