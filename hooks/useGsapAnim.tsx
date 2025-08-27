@@ -253,7 +253,7 @@ export const useGsapAnim = () => {
     }
   };
 
-  const animRandomChars = (
+  const animRandomChars = <T extends HTMLElement>(
     elementRef: RefObject<T | null>, // element to animate
     triggerRef?: RefObject<T | null>, // trigger element
     delay: number = 0, // delay of animation
