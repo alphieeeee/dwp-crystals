@@ -8,8 +8,6 @@
     rgb(130,127,202), 
     rgb(88,87,149)
   );
-  // background: #000;
-  // background: linear-gradient(to bottom, #fe9216, #db5fb3, #512c6f);
   .logo {
     background: linear-gradient(to bottom, #fe9216, #db5fb3, #512c6f);
     width: 40%;
@@ -60,5 +58,9 @@
     aspect-ratio: 1/1;
     right: 5vw;
     top: 4vw;
+    @media (max-width: 1023px) {
+      width: 30%;
+      top: 30vw;
+    }
   }
 }

@@ -1,21 +1,29 @@
 "use client";
-import { RefObject } from "react";
+import React, { RefObject } from "react";
 // import useIsomorphicLayoutEffect from "../utils/useIsomorphicLayoutEffect";
 import { useRouter } from "next/navigation";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { SplitText } from "gsap/SplitText";
 import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 
+type RefLike<T extends HTMLElement = HTMLElement> =
+  | React.RefObject<T | null>
+  | { current: T | null };
+
+const getCurrent = <T extends HTMLElement>(r?: RefLike<T>) =>
+  (r?.current ?? null) as T | null;
+
 export const useGsapAnim = () => {
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin);
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText, DrawSVGPlugin);
   }, []);
 
   const animReveal = <T extends HTMLElement>(
-    elementRef: RefObject<T | null>, // element to animate
-    triggerRef?: RefObject<T | null>, // trigger element
+    elementRef: RefLike<T>, // element to animate
+    triggerRef?: RefLike<HTMLElement>, // trigger element
     delay: number = 0, // delay of animation
     duration: number = 0.5, // duration of animation
     markers: boolean = false, // show markers
@@ -23,8 +31,9 @@ export const useGsapAnim = () => {
     inViewport: boolean = true, // animate on viewport
   ) => {
     if (elementRef.current) {
-      const el = elementRef.current;
-      const triggerEL = triggerRef?.current ? triggerRef?.current : el;
+      const el = getCurrent(elementRef);
+      if (!el) return;
+      const triggerEL = (getCurrent(triggerRef) as HTMLElement) ?? el;
       const revealTL = gsap.timeline({
         paused: true,
         delay: delay,
@@ -58,8 +67,8 @@ export const useGsapAnim = () => {
   };
 
   const animPanning = <T extends HTMLElement>(
-    elementRef: RefObject<T | null>, // element to animate
-    triggerRef?: RefObject<T | null>, // trigger element
+    elementRef: RefLike<T>, // element to animate
+    triggerRef?: RefLike<HTMLElement>, // trigger element
     delay: number = 0, // delay of animation
     duration: number = 0.5, // duration of animation
     markers: boolean = false, // show markers
@@ -74,8 +83,9 @@ export const useGsapAnim = () => {
     fade: string = 'in' // fade in or out
   ) => {
     if (elementRef.current) {
-      const el = elementRef.current
-      const triggerEL = triggerRef?.current ? triggerRef?.current : el;
+      const el = getCurrent(elementRef);
+      if (!el) return;
+      const triggerEL = (getCurrent(triggerRef) as HTMLElement) ?? el;
       let fromParams = {};
       let toParams = {};
       const triggerStart = starting;
@@ -142,8 +152,8 @@ export const useGsapAnim = () => {
   }
 
   const animScale = <T extends HTMLElement>(
-    elementRef: RefObject<T | null>, // element to animate
-    triggerRef?: RefObject<T | null>, // trigger element
+    elementRef: RefLike<T>, // element to animate
+    triggerRef?: RefLike<HTMLElement>, // trigger element
     delay: number = 0, // delay of animation
     duration: number = 0.5, // duration of animation
     markers: boolean = false, // show markers
@@ -155,8 +165,9 @@ export const useGsapAnim = () => {
     scale: string = "up", // up in or down
   ) => {
     if (elementRef.current) {
-      const el = elementRef.current;
-      const triggerEL = triggerRef?.current ? triggerRef?.current : el;
+      const el = getCurrent(elementRef);
+      if (!el) return;
+      const triggerEL = (getCurrent(triggerRef) as HTMLElement) ?? el;
       let fromParams = {};
       let toParams = {};
       if (scale === "up") {
@@ -198,8 +209,8 @@ export const useGsapAnim = () => {
   };
 
   const animWidth = <T extends HTMLElement>(
-    elementRef: RefObject<T | null>, // element to animate
-    triggerRef?: RefObject<T | null>, // trigger element
+    elementRef: RefLike<T>, // element to animate
+    triggerRef?: RefLike<HTMLElement>, // trigger element
     delay: number = 0, // delay of animation
     duration: number = 0.5, // duration of animation
     markers: boolean = false, // show markers
@@ -211,8 +222,9 @@ export const useGsapAnim = () => {
     scale: string = "up", // up in or down
   ) => {
     if (elementRef.current) {
-      const el = elementRef.current;
-      const triggerEL = triggerRef?.current ? triggerRef?.current : el;
+      const el = getCurrent(elementRef);
+      if (!el) return;
+      const triggerEL = (getCurrent(triggerRef) as HTMLElement) ?? el;
       let fromParams = {};
       let toParams = {};
       if (scale === "up") {
@@ -254,8 +266,8 @@ export const useGsapAnim = () => {
   };
 
   const animRandomChars = <T extends HTMLElement>(
-    elementRef: RefObject<T | null>, // element to animate
-    triggerRef?: RefObject<T | null>, // trigger element
+    elementRef: RefLike<T>, // element to animate
+    triggerRef?: RefLike<HTMLElement>, // trigger element
     delay: number = 0, // delay of animation
     duration: number = 1, // duration of animation
     markers: boolean = false, // show
@@ -264,8 +276,9 @@ export const useGsapAnim = () => {
     posParams: number = 2, // position parameters
   ) => {
     if (elementRef.current) {
-      const el = elementRef.current;
-      const triggerEL = triggerRef?.current ? triggerRef?.current : el;
+      const el = getCurrent(elementRef);
+      if (!el) return;
+      const triggerEL = (getCurrent(triggerRef) as HTMLElement) ?? el;
       const mySplitText = new SplitText(elementRef.current, {
         type: "chars, words",
       });
@@ -311,8 +324,8 @@ export const useGsapAnim = () => {
   };
 
   // const animCount = (
-  //   elementRef: RefObject<HTMLElement>, // element to animate
-  //   triggerRef?: RefObject<HTMLElement>, // trigger element
+  //   elementRef: RefLike<T>, // element to animate
+  //   triggerRef?: RefLike<HTMLElement>, // trigger element
   //   delay: number = 0, // delay of animation
   //   duration: number = 0.5, // duration of animation
   //   markers: boolean = false, // show markers
@@ -350,8 +363,8 @@ export const useGsapAnim = () => {
   // }
 
   const animScribble = <T extends HTMLElement>(
-    elementRef: RefObject<T | null>, // element to animate
-    triggerRef?: RefObject<T | null>, // trigger element
+    elementRef: RefLike<T>, // element to animate
+    triggerRef?: RefLike<HTMLElement>, // trigger element
     delay: number = 0, // delay of animation
     duration: number = 0.5, // duration of animation
     markers: boolean = false, // show markers
@@ -359,9 +372,10 @@ export const useGsapAnim = () => {
     inViewport: boolean = true, // animate on viewport
   ) => {
     if (elementRef.current) {
-      const el = elementRef.current;
+      const el = getCurrent(elementRef);
+      if (!el) return;
+      const triggerEL = (getCurrent(triggerRef) as HTMLElement) ?? el;
       const svgPath = el.querySelector("path");
-      const triggerEL = triggerRef?.current ? triggerRef?.current : el;
       const scribbleTL = gsap.timeline({ paused: true, delay: delay });
       gsap.set("svg", { transformPerspective: 100 });
       gsap.set(svgPath, { drawSVG: "0%", opacity: 0 });
@@ -402,8 +416,8 @@ export const useGsapAnim = () => {
   };
 
   const animProgress = <T extends HTMLElement>(
-    elementRef: RefObject<T | null>, // element to animate
-    triggerRef?: RefObject<T | null>, // trigger element
+    elementRef: RefLike<T>, // element to animate
+    triggerRef?: RefLike<HTMLElement>, // trigger element
     delay: number = 0, // delay of animation
     duration: number = 0.5, // duration of animation
     markers: boolean = false, // show markers
@@ -413,8 +427,9 @@ export const useGsapAnim = () => {
     increaseBy: number = 1, // increment value
   ) => {
     if (elementRef.current) {
-      const el = elementRef.current;
-      const triggerEL = triggerRef?.current ? triggerRef?.current : el;
+      const el = getCurrent(elementRef);
+      if (!el) return;
+      const triggerEL = (getCurrent(triggerRef) as HTMLElement) ?? el;
       const countTL = gsap.timeline({
         paused: true,
         delay: delay,

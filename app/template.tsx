@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 // import useIsomorphicLayoutEffect from "../utils/useIsomorphicLayoutEffect";
 import { usePageTransition } from "@/hooks/usePageTransition";
+import Footer from "./components/Footer";
 
 interface ScrollSmoothProps {
   children: React.ReactNode;
@@ -43,6 +44,7 @@ const ScrollSmooth: React.FC<ScrollSmoothProps> = ({ children }) => {
       <div id="smooth-wrapper" ref={smoothWrapper}>
         <div id="smooth-content">
           <div id="main-container">{children}</div>
+          <Footer />
         </div>
       </div>
       <div

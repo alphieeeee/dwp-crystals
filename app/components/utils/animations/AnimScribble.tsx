@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react'
 // import useIsomorphicLayoutEffect from "../../../utils/useIsomorphicLayoutEffect";
 import { useGsapAnim } from '@/hooks/useGsapAnim';
 
-interface AnimWidthProps {
+interface AnimScribbleProps {
   id?: string;
   className?: string;
   style?: React.CSSProperties;
@@ -22,7 +22,7 @@ interface AnimWidthProps {
   scale: string;
 }
 
-const AnimWidth: React.FC<AnimWidthProps> = ({
+const AnimScribble: React.FC<AnimScribbleProps> = ({
   id,
   trigger,
   className,
@@ -42,7 +42,6 @@ const AnimWidth: React.FC<AnimWidthProps> = ({
   const customClasses = `${className ? ` ${className}` : ''}`;
   const customStyles = { ...style };
   const elementRef = useRef<HTMLDivElement | null>(null);
-  const container = trigger ?? elementRef;
   
   // useIsomorphicLayoutEffect(() => {
   //   gsap.registerPlugin(useGSAP);
@@ -50,7 +49,7 @@ const AnimWidth: React.FC<AnimWidthProps> = ({
 
   useGSAP(() => {
     animWidth(elementRef, trigger, delay, duration, markers, animOnce, inViewport, origin, from, to, scale);
-  }, { scope: container });
+  }, { scope: elementRef });
 
   return (
     <div
@@ -64,4 +63,4 @@ const AnimWidth: React.FC<AnimWidthProps> = ({
   );
 };
 
-export default AnimWidth;
+export default AnimScribble;

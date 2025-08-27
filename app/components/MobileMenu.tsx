@@ -138,7 +138,7 @@ const NavMobile: React.FC = () => {
         <div
           className={`${styles["nav-mobile"]} w-full h-full flex justify-end items-center`}
         >
-          <nav className={`w-[100vw] lg:w-[50vw] text-right`}>
+          <nav className={`w-[100vw] lg:w-[70vw] text-right`}>
             <ul className={`grid grid-cols-12 gap-[1vw]`} ref={navMobileRef}>
               {navBar.map((menu, index) => (
                 <li
@@ -155,7 +155,6 @@ const NavMobile: React.FC = () => {
               ))}
             </ul>
           </nav>
-          {/* <div className={`${styles['font-copyright']} absolute bottom-[1vw] right-[1vw]`}>Icons made from <a href="https://www.onlinewebfonts.com/icon">svg icons</a>is licensed by CC BY 4.0</div> */}
         </div>
         <div
           className={`${styles["nav-menu-mobile"]} absolute flex justify-end align-center`}

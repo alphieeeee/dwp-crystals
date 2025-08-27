@@ -34,7 +34,6 @@ const AnimRandomChars: React.FC<AnimRandomCharsProps> = ({
   const customClasses = `${className ? ` ${className}` : ''}`;
   const customStyles = { ...style };
   const elementRef = useRef<HTMLDivElement | null>(null);
-  const container = trigger ?? elementRef;
   
   // useIsomorphicLayoutEffect(() => {
   //   gsap.registerPlugin(useGSAP);
@@ -42,7 +41,7 @@ const AnimRandomChars: React.FC<AnimRandomCharsProps> = ({
 
   useGSAP(() => {
     animRandomChars(elementRef, trigger, delay, duration, markers, animOnce, inViewport);
-  }, { scope: container });
+  }, { scope: elementRef });
 
   return (
     <div

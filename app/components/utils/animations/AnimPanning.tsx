@@ -5,11 +5,15 @@ import { useGSAP } from '@gsap/react'
 // import useIsomorphicLayoutEffect from "../../../utils/useIsomorphicLayoutEffect";
 import { useGsapAnim } from "@/hooks/useGsapAnim";
 
+type RefLike<T extends HTMLElement = HTMLElement> =
+  | React.RefObject<T | null>
+  | { current: T | null };
+
 interface AnimPanningProps {
   id?: string;
   className?: string;
   style?: React.CSSProperties;
-  trigger?: RefObject<HTMLElement>;
+  trigger?: RefLike<HTMLElement>;
   delay?: number;
   duration: number;
   markers?: boolean;
@@ -48,15 +52,23 @@ const AnimPanning: React.FC<AnimPanningProps> = ({
   const customClasses = `${className ? ` ${className}` : ''}`;
   const customStyles = { ...style };
   const elementRef = useRef<HTMLDivElement | null>(null);
-  const container = trigger ?? elementRef;
   
   // useIsomorphicLayoutEffect(() => {
   //   gsap.registerPlugin(useGSAP);
   // }, []);
 
   useGSAP(() => {
+    const el = elementRef.current;
+    const trig = trigger?.current ?? el;
+    console.log('el:', elementRef.current);
+    console.log('trigger:', trigger?.current);
+    if (!el || !trig) return;
     animPanning(elementRef, trigger, delay, duration, markers, animOnce, inViewport, onScroll, starting, ending, direction, from, to, fade);
-  }, { scope: container });
+  }, { scope: elementRef, dependencies: [
+    trigger?.current,
+    delay, duration, markers, animOnce, inViewport, onScroll,
+    starting, ending, direction, from, to, fade
+  ] });
 
   return (
     <div

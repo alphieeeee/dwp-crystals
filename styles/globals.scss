@@ -106,7 +106,15 @@ body {
   -moz-backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
   .transition-overlay {
-    background: #ffdaed;
+    // background: #ffdaed;
+    background: linear-gradient(to right, 
+      rgb(109,103,161), 
+      rgb(91,90,152), 
+      rgb(126,123,199), 
+      rgb(130,127,202), 
+      rgb(88,87,149)
+    );
+    // background: #fff;
     transform: translate3d(0, 0, 0);
   }
 }

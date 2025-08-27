@@ -40,26 +40,10 @@ const AnimWidth: React.FC<AnimWidthProps> = ({
   const customClasses = `${className ? ` ${className}` : ""}`;
   const customStyles = { ...style };
   const elementRef = useRef<HTMLDivElement | null>(null);
-  const container = trigger ?? elementRef;
 
-  useGSAP(
-    () => {
-      animWidth(
-        elementRef,
-        trigger,
-        delay,
-        duration,
-        markers,
-        animOnce,
-        inViewport,
-        origin,
-        from,
-        to,
-        scale,
-      );
-    },
-    { scope: container },
-  );
+  useGSAP(() => {
+    animWidth(elementRef, trigger, delay, duration, markers, animOnce, inViewport, origin, from, to, scale);
+  }, { scope: elementRef });
 
   return (
     <div

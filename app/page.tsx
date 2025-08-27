@@ -5,7 +5,7 @@ import HomeAbout from "./components/home/HomeAbout";
 
 const Home = () => {
   return (
-    <main className={`pt-[2vw]`}>
+    <main className={`w-full overflow-x-hidden`}>
       <HeroSection />
       {/* <HomeSection /> */}
       <HomeAbout />

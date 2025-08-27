@@ -42,7 +42,6 @@ const AnimScale: React.FC<AnimScaleProps> = ({
   const customClasses = `${className ? ` ${className}` : ''}`;
   const customStyles = { ...style };
   const elementRef = useRef<HTMLDivElement | null>(null);
-  const container = trigger ?? elementRef;
   
   // useIsomorphicLayoutEffect(() => {
   //   gsap.registerPlugin(useGSAP);
@@ -50,7 +49,7 @@ const AnimScale: React.FC<AnimScaleProps> = ({
 
   useGSAP(() => {
     animScale(elementRef, trigger, delay, duration, markers, animOnce, inViewport, origin, from, to, scale);
-  }, { scope: container });
+  }, { scope: elementRef });
 
   return (
     <div

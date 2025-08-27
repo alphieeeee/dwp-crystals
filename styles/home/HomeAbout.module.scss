@@ -7,10 +7,23 @@
             max-width: 80%;
             margin: auto;
             color: #fff;
-            font-size: 1.6vw;
-            // text-align: center;
+            font-size: 1.75rem;
+            text-align: left;
+            @media (max-width: 1279px) {
+                font-size: 1.5rem;
+            }
+            @media (max-width: 1023px) {
+                font-size: 1.25rem;
+                text-align: center;
+            }
+            @media (max-width: 767px) {
+                font-size: 1rem;
+            }
         }
     }
+    // .sticky-holder {
+    //     border: 1px solid white;
+    // }
     .sticky {
         background: #bde0fe;
         border-radius: 8px;
@@ -21,7 +34,7 @@
         height: auto;
         .pinku {
             margin: auto;
-            width: 400px;
+            width: 70%;
             // height: auto;
         }
     }

@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   // ]
 
   return (
-    <div className={`${styles.container} w-full h-full`}>
+    <header className={`${styles.container} w-full h-full`}>
       <div className="relative top-0 left-0 w-full h-full flex">
         <div className={`${styles.left} w-[50%] h-full`}></div>
         <div className={`${styles.right} w-[50%] h-full`}>
@@ -37,7 +37,7 @@ const Header: React.FC = () => {
         </div>
       </div>
       <MobileMenu />
-    </div>
+    </header>
   );
 };
 
