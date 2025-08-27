@@ -10,7 +10,7 @@ const HeroSection = () => {
       <div className={`${styles["brand-name-container"]}`}>
         <div className={`${styles["brand-name"]}`}>
           <Image
-            src="/dwp-brand-name.png"
+            src="/images/dwp-brand-name.png"
             alt="brand"
             width={1169}
             height={268}
