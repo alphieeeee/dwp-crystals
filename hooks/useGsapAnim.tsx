@@ -13,9 +13,9 @@ export const useGsapAnim = () => {
     gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin);
   }, []);
 
-  const animReveal = (
-    elementRef: RefObject<HTMLElement>, // element to animate
-    triggerRef?: RefObject<HTMLElement>, // trigger element
+  const animReveal = <T extends HTMLElement>(
+    elementRef: RefObject<T | null>, // element to animate
+    triggerRef?: RefObject<T | null>, // trigger element
     delay: number = 0, // delay of animation
     duration: number = 0.5, // duration of animation
     markers: boolean = false, // show markers
@@ -57,9 +57,9 @@ export const useGsapAnim = () => {
     }
   };
 
-  const animPanning = (
-    elementRef: RefObject<HTMLElement>, // element to animate
-    triggerRef?: RefObject<HTMLElement>, // trigger element
+  const animPanning = <T extends HTMLElement>(
+    elementRef: RefObject<T | null>, // element to animate
+    triggerRef?: RefObject<T | null>, // trigger element
     delay: number = 0, // delay of animation
     duration: number = 0.5, // duration of animation
     markers: boolean = false, // show markers
@@ -116,9 +116,7 @@ export const useGsapAnim = () => {
           markers: markers,
           scrub: true,
         });
-        console.log('on scroll true');
       } else {
-        console.log('on scroll false');
         if(inViewport) {
           // ENTER
           const panningEnterST = ScrollTrigger.create({
@@ -143,9 +141,9 @@ export const useGsapAnim = () => {
     }
   }
 
-  const animScale = (
-    elementRef: RefObject<HTMLElement>, // element to animate
-    triggerRef?: RefObject<HTMLElement>, // trigger element
+  const animScale = <T extends HTMLElement>(
+    elementRef: RefObject<T | null>, // element to animate
+    triggerRef?: RefObject<T | null>, // trigger element
     delay: number = 0, // delay of animation
     duration: number = 0.5, // duration of animation
     markers: boolean = false, // show markers
@@ -199,9 +197,9 @@ export const useGsapAnim = () => {
     }
   };
 
-  const animWidth = (
-    elementRef: RefObject<HTMLElement>, // element to animate
-    triggerRef?: RefObject<HTMLElement>, // trigger element
+  const animWidth = <T extends HTMLElement>(
+    elementRef: RefObject<T | null>, // element to animate
+    triggerRef?: RefObject<T | null>, // trigger element
     delay: number = 0, // delay of animation
     duration: number = 0.5, // duration of animation
     markers: boolean = false, // show markers
@@ -256,8 +254,8 @@ export const useGsapAnim = () => {
   };
 
   const animRandomChars = (
-    elementRef: RefObject<HTMLElement>, // element to animate
-    triggerRef?: RefObject<HTMLElement>, // trigger element
+    elementRef: RefObject<T | null>, // element to animate
+    triggerRef?: RefObject<T | null>, // trigger element
     delay: number = 0, // delay of animation
     duration: number = 1, // duration of animation
     markers: boolean = false, // show
@@ -351,9 +349,9 @@ export const useGsapAnim = () => {
   //   }
   // }
 
-  const animScribble = (
-    elementRef: RefObject<HTMLElement>, // element to animate
-    triggerRef?: RefObject<HTMLElement>, // trigger element
+  const animScribble = <T extends HTMLElement>(
+    elementRef: RefObject<T | null>, // element to animate
+    triggerRef?: RefObject<T | null>, // trigger element
     delay: number = 0, // delay of animation
     duration: number = 0.5, // duration of animation
     markers: boolean = false, // show markers
@@ -403,9 +401,9 @@ export const useGsapAnim = () => {
     }
   };
 
-  const animProgress = (
-    elementRef: RefObject<HTMLElement>, // element to animate
-    triggerRef?: RefObject<HTMLElement>, // trigger element
+  const animProgress = <T extends HTMLElement>(
+    elementRef: RefObject<T | null>, // element to animate
+    triggerRef?: RefObject<T | null>, // trigger element
     delay: number = 0, // delay of animation
     duration: number = 0.5, // duration of animation
     markers: boolean = false, // show markers
