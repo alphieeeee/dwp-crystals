@@ -20,7 +20,7 @@ const ProductSection: React.FC = () => {
         <HeaderTitle title="Charms" />
       </div>
       <div
-        className={`mx-auto w-[100%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[2vw] gap-y-[3vw]`}
+        className={`mx-auto w-[100%] grid grid-cols-2 lg:grid-cols-3 gap-x-[2vw] gap-y-[3vw]`}
       >
         {projects.map((project, index) => (
           <div className={`${styles.cards} flex flex-col`} key={project.id}>
