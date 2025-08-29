@@ -60,13 +60,14 @@
                       </ImageParallax>
                     </div>
                     <div
-                      className={`${styles["product-name"]} absolute right-0 top-0 -translate-y-1/2`}
+                      className={`${styles["product-name"]} dwp-shadow absolute right-0 top-0 -translate-y-1/2`}
                     >
                       <AnimPanning
                         key={`name-${index}`}
                         inViewport={index === 0 ? false : true}
                         duration={1}
                         direction={"left"}
+                        animOnce={true}
                         from={0}
                         to={-10}
                         fade={"in"}
@@ -74,11 +75,12 @@
                         <div>{project.name}</div>
                       </AnimPanning>
                     </div>
-                    <div className={`${styles['product-desc']} absolute right-0 bottom-[20%] -translate-x-[15%]`}>
+                    <div className={`${styles['product-desc']} dwp-shadow absolute right-0 bottom-[20%] -translate-x-[15%]`}>
                     <AnimPanning
                       key={`desc-${index}`}
                       duration={1}
                       direction={'left'}
+                      animOnce={true}
                       from={0}
                       to={10}
                       fade={'in'}>
@@ -86,12 +88,13 @@
                     </AnimPanning>
                   </div>
                   <div
-                    className={`${styles["product-price"]} absolute right-[1%] bottom-[0%]`}
+                    className={`${styles["product-price"]} dwp-shadow absolute right-[1%] bottom-[0%]`}
                   >
                       <AnimPanning
                         key={`price-${index}`}
                         duration={1}
                         direction={"left"}
+                        animOnce={true}
                         from={10}
                         to={0}
                         fade={"in"}
@@ -101,7 +104,7 @@
                     </div>
                     <div className={`absolute left-[3%] bottom-[10%] lg:bottom-[6%] font-extrabold`}>
                       <Button
-                        className="px-[1.5rem] py-[0.6rem] text-xs lg:text-md"
+                        className="px-[1.5rem] py-[0.6rem] text-xs lg:text-base"
                         style={{
                           background: 'rgb(130,127,202)',
                           borderColor: '#fff',
