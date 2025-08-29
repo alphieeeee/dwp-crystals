@@ -101,7 +101,7 @@
                     </div>
                     <div className={`absolute left-[3%] bottom-[10%] lg:bottom-[6%] font-extrabold`}>
                       <Button
-                        className="px-[1.5rem] py-[0.6rem]"
+                        className="px-[1.5rem] py-[0.6rem] text-xs lg:text-md"
                         style={{
                           background: 'rgb(130,127,202)',
                           borderColor: '#fff',
