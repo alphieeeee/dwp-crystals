@@ -84,7 +84,7 @@ const NavMobile: React.FC = () => {
 
   const navBar = [
     { name: "Home", link: "/" },
-    { name: "Collection", link: "/collection" },
+    { name: "Collections", link: "/collections" },
   ];
   const toggleMenu = contextSafe(() => {
     if (isPlaying) return;

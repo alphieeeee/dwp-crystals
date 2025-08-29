@@ -1,7 +1,7 @@
 'use client'
 import React, { useRef } from 'react'
 import Image from 'next/image'
-import styles from '@/styles/collection/Orbit.module.scss'
+import styles from '@/styles/collections/Orbit.module.scss'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 

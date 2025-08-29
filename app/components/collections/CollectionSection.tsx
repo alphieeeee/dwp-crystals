@@ -1,10 +1,11 @@
   "use client";
   import React, { useEffect, useRef, useState } from "react";
-  import styles from "@/styles/collection/CollectionSection.module.scss";
+  import styles from "@/styles/collections/CollectionSection.module.scss";
   import Image from "next/image";
   import ImageParallax from "@/app/components/utils/ImageParallax";
   import AnimPanning from "@/app/components/utils/animations/AnimPanning";
   import HeaderTitle from "@/app/components/utils/HeaderTitle";
+  import Button from "@/app/components/utils/Button";
   import { useArrayRefs } from "@/utils/helpers/useArrayRefs";
 
   import { gsap } from "gsap";
@@ -26,10 +27,10 @@
 
     return (
       <section
-        className={`${styles.container} mx-auto w-[min(90vw,1920px)] pb-[5vh] overflow-hidden`}
+        className={`${styles.container} mx-auto w-[min(90vw,1920px)] overflow-hidden`}
         ref={collectionSectionRef}
       >
-        <HeaderTitle title="Collection" />
+        <HeaderTitle title="Collections" />
         {projects.map((project, index) => (
           <div className={`${styles.cards} relative w-full h-[auto] lg:h-[767px] flex items-center`} key={project.id}>
             <div
@@ -84,9 +85,9 @@
                       <p>{project.desc}</p>
                     </AnimPanning>
                   </div>
-                    <div
-                      className={`${styles["product-price"]} absolute right-[1%] bottom-[0%]`}
-                    >
+                  <div
+                    className={`${styles["product-price"]} absolute right-[1%] bottom-[0%]`}
+                  >
                       <AnimPanning
                         key={`price-${index}`}
                         duration={1}
@@ -97,6 +98,22 @@
                       >
                         <p>$29.99</p>
                       </AnimPanning>
+                    </div>
+                    <div className={`absolute left-[3%] bottom-[10%] lg:bottom-[6%] font-extrabold`}>
+                      <Button
+                        className="px-[1.5rem] py-[0.6rem]"
+                        style={{
+                          background: 'rgb(130,127,202)',
+                          borderColor: '#fff',
+                          color: '#fff',
+                        }}
+                        as='a'
+                        href='/collections/1'
+                        hoverColor={'rgb(130,127,202)'}
+                        hoverBg="#f2b3d1"
+                      >
+                        See Collection
+                      </Button>
                     </div>
                   </div>
                 </div>

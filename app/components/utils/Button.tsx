@@ -39,7 +39,7 @@ const Button: React.FC<ButtonProps & React.HTMLAttributes<HTMLElement>> = ({
 
   if (as === "a" && href) {
     return (
-      <a href={href} className={customClasses} style={customStyles} {...props}>
+      <a href={href} className={customClasses} style={customStyles} {...props} target='_blank' rel='noopener noreferrer'>
         {children}
       </a>
     );

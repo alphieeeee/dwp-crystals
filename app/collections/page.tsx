@@ -1,5 +1,5 @@
 import React from "react";
-import CollectionSection from "../components/collection/CollectionSection";
+import CollectionSection from "../components/collections/CollectionSection";
 import HeroSection from "../components/HeroSection";
 
 const CollectionPage = () => {

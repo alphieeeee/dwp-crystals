@@ -100,6 +100,13 @@ body {
   }
 }
 
+.dwp-shadow {
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.8);
+  // text-shadow: 0 0 6px #0ff, 0 0 14px #0ff;
+  // text-shadow: 0 -1px 0 rgba(255,255,255,.6), 0 1px 0 rgba(0,0,0,.3);
+  // text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000,  0 -1px 0 #000;
+}
+
 .transition-overlays {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;

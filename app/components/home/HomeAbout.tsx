@@ -44,7 +44,7 @@ const HomeAbout: React.FC = () => {
 						</div>
 					{/* </AnimPanning> */}
 				</div>
-				<div className={`${styles['homeabout-right']} w-full lg:w-1/2 py-[5vw]`}>
+				<div className={`${styles['homeabout-right']} dwp-shadow w-full lg:w-1/2 py-[5vw]`}>
 					<p>At DWP Crystals, we're dedicated to more than just crafting beautiful crystal pieces—we're on a mission to make a difference. Established with a deep love for both art and felines, our purpose is to support and care for the local cat community.</p>
 				</div>
 			</div>
@@ -63,7 +63,7 @@ const HomeAbout: React.FC = () => {
 						</div>
 					</div>
 				</div>
-				<div className={`${styles['homeabout-right']} w-full lg:w-1/2 py-[5vw]`}>
+				<div className={`${styles['homeabout-right']} dwp-shadow w-full lg:w-1/2 py-[5vw]`}>
 					<p>Every crystal and creation you find here is handcrafted with passion and a purpose. We believe in the power of giving back, which is why a portion of every purchase goes directly towards funding cat rescue, welfare, and care initiatives. By choosing DWP Crystals, you're not only bringing a unique piece into your life, but you're also helping us provide a safe and loving home for cats in need.</p>
 				</div>
 			</div>

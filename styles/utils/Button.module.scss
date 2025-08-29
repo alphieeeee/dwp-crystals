@@ -1,0 +1,14 @@
+.btn {
+  border: 2px solid #fff;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  &:hover {
+    background: var(--hover-bg) !important;
+    color: var(--hover-color) !important;
+    border-color: var(--hover-border) !important;
+  }
+}

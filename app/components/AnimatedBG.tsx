@@ -2,8 +2,8 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import styles from "@/styles/AnimatedBG.module.scss";
-import Orbit from "@/app/components/collection/Orbit";
-import Ufo from "@/app/components/collection/Ufo";
+import Orbit from "@/app/components/collections/Orbit";
+import Ufo from "@/app/components/collections/Ufo";
 
 
 // GSAP
